@@ -1,0 +1,179 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "lektor-admin Documentation\n\n\nVersion:\n 0.1.0-dev\n\n\nAPI\n\n\n\n\nOverview\n\n\nEndpoints\n\n\nErrors\n\n\nChangelog\n\n\n\n\nBackend\n\n\n\n\nServer Setup & Configurations\n\n\nCoding Rules\n\n\n\n\nNOTE:\n This documentation changes frequently, checkout the \nchangelog\n for detailed breaking changes and features added.\n\n\nWrite your documentation using \nMarkdown\n in \ndocs/\n folder. Need help? Read mkdocs \ndocumentation\n.",
+            "title": "Home"
+        },
+        {
+            "location": "/#lektor-admin-documentation",
+            "text": "Version:  0.1.0-dev",
+            "title": "lektor-admin Documentation"
+        },
+        {
+            "location": "/#api",
+            "text": "Overview  Endpoints  Errors  Changelog",
+            "title": "API"
+        },
+        {
+            "location": "/#backend",
+            "text": "Server Setup & Configurations  Coding Rules   NOTE:  This documentation changes frequently, checkout the  changelog  for detailed breaking changes and features added.  Write your documentation using  Markdown  in  docs/  folder. Need help? Read mkdocs  documentation .",
+            "title": "Backend"
+        },
+        {
+            "location": "/api/overview/",
+            "text": "This describes the resources that make up the official lektor-admin API v1.\n\n\n\n\n\n\nCurrent Version\n\n\nSchema\n\n\nHTTP Verbs\n\n\nPagination\n\n\nRate Limit\n\n\nAuthorization\n\n\n\n\n\n\nCurrent Version\n\n\nBy default, all requests receive the \n1.0\n version of the API. We encourage you to explicitly request this version via the Accept header.\n\n\nAccept: application/json; version=1.0\n\n\n\n\nImportant:\n The default version of the API may change in the future. If you\u2019re building an application and care about the stability of the API, be sure to request a specific version in the \nAccept\n header as shown in the examples below.\n\n\nGET /bookings/ HTTP/1.1\nHost: example.com\nAccept: application/json; version=1.0\n\n\n\n\nSchema\n\n\nAll timestamps are returned in ISO 8601 format:\n\n\nYYYY-MM-DDTHH:MM:SSZ\n\n\nHTTP Verbs\n\n\nWhere possible, API v1 strives to use appropriate HTTP verbs for each action.\n\n\n\n\n\n\n\n\nVerb\n\n\nDescription\n\n\n\n\n\n\n\n\n\n\nHEAD\n\n\nCan be issued against any resource to get just the HTTP header info.\n\n\n\n\n\n\nGET\n\n\nUsed for retrieving resources.\n\n\n\n\n\n\nPOST\n\n\nUsed for creating resources, or performing custom actions (such as merging a pull request).\n\n\n\n\n\n\nPATCH\n\n\nUsed for updating resources with partial JSON data. For instance, an Issue resource has title and body attributes. A PATCH request may accept one or more of the attributes to update the resource. PATCH is a relatively new and uncommon HTTP verb, so resource endpoints also accept POST requests.\n\n\n\n\n\n\nPUT\n\n\nUsed for replacing resources or collections. For PUT requests with no body attribute, be sure to set the Content-Length header to zero.\n\n\n\n\n\n\nDELETE\n\n\nUsed for deleting resources.\n\n\n\n\n\n\n\n\nPagination\n\n\nRequests that return multiple items will be paginated to 30 items by default. You can specify further pages with the \n?page\n parameter. For some resources, you can also set a custom page size up to 1000 with the \n?per_page\n parameter.\n\n\nNote that page numbering is 1-based and that omitting the \n?page\n parameter will return the first page.\n\n\nRate Limit\n\n\nAll the unauthorized urls have a rate limit of 10,000 requests/day/IP. After exceeding the limit, you\u2019ll get \nHTTP TOO MANY REQUESTS\n with status code \n429\n. When this happens you\u2019ll also receive \nX-Throttle-Wait-Seconds: <time_in_sec>\n header in response header.\n\n\nAuthorization\n\n\nTODO",
+            "title": "Overview & Usages"
+        },
+        {
+            "location": "/api/overview/#current-version",
+            "text": "By default, all requests receive the  1.0  version of the API. We encourage you to explicitly request this version via the Accept header.  Accept: application/json; version=1.0  Important:  The default version of the API may change in the future. If you\u2019re building an application and care about the stability of the API, be sure to request a specific version in the  Accept  header as shown in the examples below.  GET /bookings/ HTTP/1.1\nHost: example.com\nAccept: application/json; version=1.0",
+            "title": "Current Version"
+        },
+        {
+            "location": "/api/overview/#schema",
+            "text": "All timestamps are returned in ISO 8601 format:  YYYY-MM-DDTHH:MM:SSZ",
+            "title": "Schema"
+        },
+        {
+            "location": "/api/overview/#http-verbs",
+            "text": "Where possible, API v1 strives to use appropriate HTTP verbs for each action.     Verb  Description      HEAD  Can be issued against any resource to get just the HTTP header info.    GET  Used for retrieving resources.    POST  Used for creating resources, or performing custom actions (such as merging a pull request).    PATCH  Used for updating resources with partial JSON data. For instance, an Issue resource has title and body attributes. A PATCH request may accept one or more of the attributes to update the resource. PATCH is a relatively new and uncommon HTTP verb, so resource endpoints also accept POST requests.    PUT  Used for replacing resources or collections. For PUT requests with no body attribute, be sure to set the Content-Length header to zero.    DELETE  Used for deleting resources.",
+            "title": "HTTP Verbs"
+        },
+        {
+            "location": "/api/overview/#pagination",
+            "text": "Requests that return multiple items will be paginated to 30 items by default. You can specify further pages with the  ?page  parameter. For some resources, you can also set a custom page size up to 1000 with the  ?per_page  parameter.  Note that page numbering is 1-based and that omitting the  ?page  parameter will return the first page.",
+            "title": "Pagination"
+        },
+        {
+            "location": "/api/overview/#rate-limit",
+            "text": "All the unauthorized urls have a rate limit of 10,000 requests/day/IP. After exceeding the limit, you\u2019ll get  HTTP TOO MANY REQUESTS  with status code  429 . When this happens you\u2019ll also receive  X-Throttle-Wait-Seconds: <time_in_sec>  header in response header.",
+            "title": "Rate Limit"
+        },
+        {
+            "location": "/api/overview/#authorization",
+            "text": "TODO",
+            "title": "Authorization"
+        },
+        {
+            "location": "/api/endpoints/",
+            "text": "For api overview and usages, check out \nthis page\n.\n\n\n\n\n\n\nAuthentication\n\n\n\n\n\n\nAuthentication\n\n\nTODO",
+            "title": "REST Endpoints"
+        },
+        {
+            "location": "/api/endpoints/#authentication",
+            "text": "TODO",
+            "title": "Authentication"
+        },
+        {
+            "location": "/api/errors/",
+            "text": "Errors\n\n\nGeneric Errors\n\n\nThe \nstatus_code\n in response header complies with the standard http response headers. We expect developers to make use of them to display appropriate error dialogs.\n\n\nFor json requests, the API will return the error in the following format:\n\n\n{\n  \"error_type\": \"WrongArguments\",\n  \"errors\": [\n    {\n      \"message\": \"Unable to login with provided credentials.\"\n    }\n  ]\n}\n\n\n\n\nValidation Errors\n\n\nFor \nPOST\n, \nPATCH\n, \nPUT\n & \nDELETE\n methods, validation error may be raised. \n\n\nIt will return (Status: \n400 Bad Request\n). \n\n\nThe response body will contain json in the format same as Generic Error with \nfield\n key. For example, if you try to register with \nemail\n which already exists. The error response body will be of the format:\n\n\n{\n  \"error_type\": \"ValidationError\",\n  \"errors\": [\n    {\n      \"field\": \"email\",\n      \"message\": \"User with this email address already exists.\"\n    },\n    {\n      \"field\": \"email\",\n      \"message\": \"Some other error related to email.\"\n    }\n  ]\n}\n\n\n\n\nNOTE\n: The copy for most of these error messages can be changed by backend developers.",
+            "title": "Errors"
+        },
+        {
+            "location": "/api/errors/#errors",
+            "text": "",
+            "title": "Errors"
+        },
+        {
+            "location": "/api/errors/#generic-errors",
+            "text": "The  status_code  in response header complies with the standard http response headers. We expect developers to make use of them to display appropriate error dialogs.  For json requests, the API will return the error in the following format:  {\n  \"error_type\": \"WrongArguments\",\n  \"errors\": [\n    {\n      \"message\": \"Unable to login with provided credentials.\"\n    }\n  ]\n}",
+            "title": "Generic Errors"
+        },
+        {
+            "location": "/api/errors/#validation-errors",
+            "text": "For  POST ,  PATCH ,  PUT  &  DELETE  methods, validation error may be raised.   It will return (Status:  400 Bad Request ).   The response body will contain json in the format same as Generic Error with  field  key. For example, if you try to register with  email  which already exists. The error response body will be of the format:  {\n  \"error_type\": \"ValidationError\",\n  \"errors\": [\n    {\n      \"field\": \"email\",\n      \"message\": \"User with this email address already exists.\"\n    },\n    {\n      \"field\": \"email\",\n      \"message\": \"Some other error related to email.\"\n    }\n  ]\n}  NOTE : The copy for most of these error messages can be changed by backend developers.",
+            "title": "Validation Errors"
+        },
+        {
+            "location": "/api/changelog/",
+            "text": ".container h1{font-size: 1.5em; }\n    .container h2{font-size: 1.2em; }\n    .container hr{margin-top: 5px; }\n\n\n\n\nDATE HERE\n\n\n\n\nadd changeset message here",
+            "title": "Changelog"
+        },
+        {
+            "location": "/api/changelog/#date-here",
+            "text": "add changeset message here",
+            "title": "DATE HERE"
+        },
+        {
+            "location": "/backend/server_config/",
+            "text": "Server Architecture and configurations\n\n\nThird Party Services\n\n\nFollowing third-party services are required in order to setup/deploy this project successfully.\n\n\nHeroku\n\n\nHeroku is platform as a service provider. We use to host the primarily web server along with different services required by this project like postgres database, newrelic, redis. See getting started docs \nhere\n, you\u2019ll require to create an account and install the \ncli-tool\n to successfully deploy this project.\n\n\nNote: Alternatively, you should be able configure a linux instance to run the same project as well, heroku like settings can be added via \n.env\n file. (refer: \nsettings/common.py\n). Just that, this documentation and project is focused more with Heroku as platform of choice.\n\n\nAmazon S3\n\n\nAmazon Simple Storage Service (\nAmazon S3\n) is used to store the uploaded media files and static content. It is a scalable and cost-efficient storage solution. \n\n\nAfter \nsigning up\n for Amazon S3, \nsetup\n an IAM user with access to a S3 bucket, you\u2019ll need \nBUCKET_NAME\n, and \nAWS_ACCESS_ID\n & \nAWS_ACCESS_SECRET\n of IAM user to setup the project.\n\n\nNote: \n- Heroku doesn\u2019t provide a persistent storage for uploaded content, best practise is to store the uploaded files in S3 buckets.\n- IAM user must have permission to list, update, create objects in S3.\n\n\nDeploying Project\n\n\nThe deployment are managed via travis, but for the first time you\u2019ll need to set the configuration values on each of the server. Read this only, if you need to deploy for the first time.\n\n\nHeroku\n\n\nRun these commands to deploy this project on Heroku (substitue all references of \n<heroku-app-name>\n with the name your heroku application.)\n\n\nheroku create --ssh-git <heroku-app-name>\n\nheroku buildpacks:set heroku/python --app=<heroku-app-name>\nheroku buildpacks:add --index 1 heroku/nodejs --app=<heroku-app-name>\n\nheroku addons:create heroku-postgresql --app=<heroku-app-name>\nheroku pg:backups schedule DATABASE_URL --at '04:00 UTC' --app=<heroku-app-name>\nheroku pg:promote DATABASE_URL --app=<heroku-app-name>\n\nheroku addons:create mailgun --app=<heroku-app-name>\nheroku config:set EMAIL_HOST=\"\\$MAILGUN_SMTP_SERVER\" \\\n                  EMAIL_HOST_USER=\"\\$MAILGUN_SMTP_LOGIN\" \\\n                  EMAIL_HOST_PASSWORD=\"\\$MAILGUN_SMTP_PASSWORD\" --app=<heroku-app-name>\n\nheroku addons:create heroku-redis:hobby-dev --app=<heroku-app-name>\nheroku addons:create redismonitor --url `heroku config:get REDIS_URL --app=<heroku-app-name>` --app=<heroku-app-name>\n\nheroku addons:create newrelic --app=<heroku-app-name>\nheroku config:set NEW_RELIC_APP_NAME=<new-relic-app-name> --app=<heroku-app-name>\n\nheroku config:set DJANGO_SETTINGS_MODULE='settings.production' \\\nDJANGO_SECRET_KEY=`openssl rand -hex 64` \\\nSITE_DOMAIN=<heroku-app-name>.herokuapp.com \\\nSITE_SCHEME=https \\\nSITE_NAME=DJANGO_SITE_NAME_HERE --app=<heroku-app-name>\n\nheroku config:set DJANGO_ADMINS='webmaster@yourdomain.com' --app=<heroku-app-name>\n\ngit push heroku master\nheroku run python manage.py createsuperuser --app=<heroku-app-name>\nheroku open --app=<heroku-app-name>\n\n\n\n\nThe following configuration doesn\u2019t allow you to \u201cby default\u201d upload the media on the Heroku server as Heroku does not support persistent storage. We use S3 for storing uploaded media. If you want to enable media upload:\n\n\n\n\nCreate S3 bucket and get AWS access key and secret that has access to this bucket.\n\n\nFollow the instructions below to enable S3 upload configuration on Heroku.\n\n\n\n\nheroku config:set ENABLE_MEDIA_UPLOAD_TO_S3=true \\\nDJANGO_AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_ID_HERE> \\\nDJANGO_AWS_SECRET_ACCESS_KEY=<YOUR_SECRET_KEY_HERE> \\\nDJANGO_AWS_STORAGE_BUCKET_NAME=<YOUR_BUCKET_NAME_HERE>\n\n\n\n\nNote:\n\n- Use \n--app=<heroku-app-name>\n if you have more than one Heroku app configured in current project.\n- Update \ntravis.yml\n, and add the \n<heroku-app-name>\n to automatically deploy to this configured Heroku app.\n\n\nProtecting staging site with Basic Authentication\n\n\nThe project include \ndjango-auth-wall\n which can be used to protect the site with Basic authentication during development. To enable the protection, add the following two variables in system environment or in django settings.\n\n\nAUTH_WALL_USERNAME=<your_basic_auth_username_here>\nAUTH_WALL_PASSWORD=<your_basic_auth_password_here>\nAUTH_WALL_REALM=<your_basic_auth_message(optional)>\n\n\n\n\nAWS/EC2\n\n\nFor deploying on aws you need to configure all the addons provided and use python-dotenv to store and read enironment variables.\n\n\nAdd the following to your \n~/.ssh/config\n file.\n\n\nHost lektor_admin.com\n    hostname <server_ip_or_>\n    user ubuntu\n    ForwardAgent yes\n    identityfile <PATH_OF_SERVER_PRIVATE_KEY_HERE>\n\n\n\n\nAdd your github private key to your local ssh-agent, which will be used by ansible on remote server to fetch the code using \nForwardAgent\n\n\nssh-add <PATH_TO_YOUR_GITHUB_PRIVATE_KEY>\n\n\n\nNow you can run the ansible script to setup the machine.\n\n\nfab prod configure\n\n\n\nThis will setup os dependencies, services like supervisor, nginx and fetch our code from Github. Our production environment requires \nsome environment variables in \n.env\n. So you can write a file \nprod.env\n locally and upload it to server with\n\n\nscp prod.env lektor_admin.com:/home/ubuntu/lektor-admin-web/.env\n\n\n\nYou can also use fab to set environment variables one by one:\n\n\nfab prod config:set,<VAR_NAME>,<VAR_VALUE>\n\n\n\nNow that you have \n.env\n setup, you can deploy your code and start services:\n\n\nfab prod deploy",
+            "title": "Server Configurations"
+        },
+        {
+            "location": "/backend/server_config/#server-architecture-and-configurations",
+            "text": "",
+            "title": "Server Architecture and configurations"
+        },
+        {
+            "location": "/backend/server_config/#third-party-services",
+            "text": "Following third-party services are required in order to setup/deploy this project successfully.",
+            "title": "Third Party Services"
+        },
+        {
+            "location": "/backend/server_config/#heroku",
+            "text": "Heroku is platform as a service provider. We use to host the primarily web server along with different services required by this project like postgres database, newrelic, redis. See getting started docs  here , you\u2019ll require to create an account and install the  cli-tool  to successfully deploy this project.  Note: Alternatively, you should be able configure a linux instance to run the same project as well, heroku like settings can be added via  .env  file. (refer:  settings/common.py ). Just that, this documentation and project is focused more with Heroku as platform of choice.",
+            "title": "Heroku"
+        },
+        {
+            "location": "/backend/server_config/#amazon-s3",
+            "text": "Amazon Simple Storage Service ( Amazon S3 ) is used to store the uploaded media files and static content. It is a scalable and cost-efficient storage solution.   After  signing up  for Amazon S3,  setup  an IAM user with access to a S3 bucket, you\u2019ll need  BUCKET_NAME , and  AWS_ACCESS_ID  &  AWS_ACCESS_SECRET  of IAM user to setup the project.  Note: \n- Heroku doesn\u2019t provide a persistent storage for uploaded content, best practise is to store the uploaded files in S3 buckets.\n- IAM user must have permission to list, update, create objects in S3.",
+            "title": "Amazon S3"
+        },
+        {
+            "location": "/backend/server_config/#deploying-project",
+            "text": "The deployment are managed via travis, but for the first time you\u2019ll need to set the configuration values on each of the server. Read this only, if you need to deploy for the first time.",
+            "title": "Deploying Project"
+        },
+        {
+            "location": "/backend/server_config/#heroku_1",
+            "text": "Run these commands to deploy this project on Heroku (substitue all references of  <heroku-app-name>  with the name your heroku application.)  heroku create --ssh-git <heroku-app-name>\n\nheroku buildpacks:set heroku/python --app=<heroku-app-name>\nheroku buildpacks:add --index 1 heroku/nodejs --app=<heroku-app-name>\n\nheroku addons:create heroku-postgresql --app=<heroku-app-name>\nheroku pg:backups schedule DATABASE_URL --at '04:00 UTC' --app=<heroku-app-name>\nheroku pg:promote DATABASE_URL --app=<heroku-app-name>\n\nheroku addons:create mailgun --app=<heroku-app-name>\nheroku config:set EMAIL_HOST=\"\\$MAILGUN_SMTP_SERVER\" \\\n                  EMAIL_HOST_USER=\"\\$MAILGUN_SMTP_LOGIN\" \\\n                  EMAIL_HOST_PASSWORD=\"\\$MAILGUN_SMTP_PASSWORD\" --app=<heroku-app-name>\n\nheroku addons:create heroku-redis:hobby-dev --app=<heroku-app-name>\nheroku addons:create redismonitor --url `heroku config:get REDIS_URL --app=<heroku-app-name>` --app=<heroku-app-name>\n\nheroku addons:create newrelic --app=<heroku-app-name>\nheroku config:set NEW_RELIC_APP_NAME=<new-relic-app-name> --app=<heroku-app-name>\n\nheroku config:set DJANGO_SETTINGS_MODULE='settings.production' \\\nDJANGO_SECRET_KEY=`openssl rand -hex 64` \\\nSITE_DOMAIN=<heroku-app-name>.herokuapp.com \\\nSITE_SCHEME=https \\\nSITE_NAME=DJANGO_SITE_NAME_HERE --app=<heroku-app-name>\n\nheroku config:set DJANGO_ADMINS='webmaster@yourdomain.com' --app=<heroku-app-name>\n\ngit push heroku master\nheroku run python manage.py createsuperuser --app=<heroku-app-name>\nheroku open --app=<heroku-app-name>  The following configuration doesn\u2019t allow you to \u201cby default\u201d upload the media on the Heroku server as Heroku does not support persistent storage. We use S3 for storing uploaded media. If you want to enable media upload:   Create S3 bucket and get AWS access key and secret that has access to this bucket.  Follow the instructions below to enable S3 upload configuration on Heroku.   heroku config:set ENABLE_MEDIA_UPLOAD_TO_S3=true \\\nDJANGO_AWS_ACCESS_KEY_ID=<YOUR_AWS_ACCESS_ID_HERE> \\\nDJANGO_AWS_SECRET_ACCESS_KEY=<YOUR_SECRET_KEY_HERE> \\\nDJANGO_AWS_STORAGE_BUCKET_NAME=<YOUR_BUCKET_NAME_HERE>  Note: \n- Use  --app=<heroku-app-name>  if you have more than one Heroku app configured in current project.\n- Update  travis.yml , and add the  <heroku-app-name>  to automatically deploy to this configured Heroku app.",
+            "title": "Heroku"
+        },
+        {
+            "location": "/backend/server_config/#protecting-staging-site-with-basic-authentication",
+            "text": "The project include  django-auth-wall  which can be used to protect the site with Basic authentication during development. To enable the protection, add the following two variables in system environment or in django settings.  AUTH_WALL_USERNAME=<your_basic_auth_username_here>\nAUTH_WALL_PASSWORD=<your_basic_auth_password_here>\nAUTH_WALL_REALM=<your_basic_auth_message(optional)>",
+            "title": "Protecting staging site with Basic Authentication"
+        },
+        {
+            "location": "/backend/server_config/#awsec2",
+            "text": "For deploying on aws you need to configure all the addons provided and use python-dotenv to store and read enironment variables.  Add the following to your  ~/.ssh/config  file.  Host lektor_admin.com\n    hostname <server_ip_or_>\n    user ubuntu\n    ForwardAgent yes\n    identityfile <PATH_OF_SERVER_PRIVATE_KEY_HERE>  Add your github private key to your local ssh-agent, which will be used by ansible on remote server to fetch the code using  ForwardAgent  ssh-add <PATH_TO_YOUR_GITHUB_PRIVATE_KEY>  Now you can run the ansible script to setup the machine.  fab prod configure  This will setup os dependencies, services like supervisor, nginx and fetch our code from Github. Our production environment requires \nsome environment variables in  .env . So you can write a file  prod.env  locally and upload it to server with  scp prod.env lektor_admin.com:/home/ubuntu/lektor-admin-web/.env  You can also use fab to set environment variables one by one:  fab prod config:set,<VAR_NAME>,<VAR_VALUE>  Now that you have  .env  setup, you can deploy your code and start services:  fab prod deploy",
+            "title": "AWS/EC2"
+        },
+        {
+            "location": "/backend/coding_rules/",
+            "text": "Conventions\n\n\n\n\nRead and pay attention to current code in the repository\n\n\nFor the Python part, we follow pep8 in most cases. We use \nflake8\n to check for linting errors. Once you\u2019re ready to commit changes, check your code with \nflake8\n.\n\n\nInstall a plugin for \nEditorConfig\n and let it handle some of the formating issues for you.\n\n\nFor the Django part, we follow standard \nDjango coding style\n.\n\n\nAnd always remember the Zen.\n\n\n\n\nCoding Rules\n\n\nDjango models\n\n\n\n\nAll model names in singular an CamelCase.\n\n\nAll models have a \nMeta\n with at least:\n\n\nverbose_name\n and \nverbose_name_plural\n: unicode strings, lowercase, with spaces.\n\n\nordering\n: return a consistent order, using pk if no other unique field or combination exists.\n\n\n\n\n\n\nAll models have \n__unicode__\n method, returning a human-readable, descriptive, short text.\n\n\nAll fields have \nverbose_name\n. Also \nhelp_text\n if needed to fully explain the field meaning.\n\n\n\n\nAll fields have explicit \nblank\n and \nnull\n parameters. Use only those combinations, unless there a documented need of other thing:\n\n\nNormal fields\n (IntegerField, DateField, ForeignKey, FileField\u2026)\n\n  - (optional) \nnull = True\n, \nblank = True\n\n  - (required) \nnull = False\n, \nblank = False\n\n\nText fields\n (CharField, TextField, URLField\u2026)\n\n  - (optional) \nnull = False\n, \nblank = True\n\n  - (required) \nnull = False\n, \nblank = False\n\n\nBoolean fields\n:\n\n  - (two values, T/F) \nnull = False\n, \nblank = True\n\n  - (three values, T/F/Null) \nnull = True\n, \nblank = True\n  \n\n\n\n\n\n\nDon\u2019t create text fields with \nnull = True\n, unless you need to distinguish between empty string and \nNone\n.\n\n\n\n\nDon\u2019t create boolean fields with \nblank = False\n, otherwise they could only be \nTrue\n.\n\n\n\n\nExample:\n\n\nclass SomeClass(models.Model):\n    name = models.CharField(max_length=100, null = False, blank = False, unique=True,\n               verbose_name = _(u'name'))\n    slug = models.SlugField(max_length=100, null = False, blank = False, unique=True,\n               verbose_name = _(u'slug'),\n               help_text = (u'Identifier of this object. Only letters, digits and underscore \"_\" allowed.'))\n    text = models.TextField(null = False, blank = True,\n               verbose_name = _(u'text'))\n\n    class Meta:\n        verbose_name = _(u'some class')\n        verbose_name_plural = _(u'some classes')\n        ordering = ['name']\n\n    def __unicode__(self):\n        return self.name",
+            "title": "Coding Rules"
+        },
+        {
+            "location": "/backend/coding_rules/#conventions",
+            "text": "Read and pay attention to current code in the repository  For the Python part, we follow pep8 in most cases. We use  flake8  to check for linting errors. Once you\u2019re ready to commit changes, check your code with  flake8 .  Install a plugin for  EditorConfig  and let it handle some of the formating issues for you.  For the Django part, we follow standard  Django coding style .  And always remember the Zen.",
+            "title": "Conventions"
+        },
+        {
+            "location": "/backend/coding_rules/#coding-rules",
+            "text": "",
+            "title": "Coding Rules"
+        },
+        {
+            "location": "/backend/coding_rules/#django-models",
+            "text": "All model names in singular an CamelCase.  All models have a  Meta  with at least:  verbose_name  and  verbose_name_plural : unicode strings, lowercase, with spaces.  ordering : return a consistent order, using pk if no other unique field or combination exists.    All models have  __unicode__  method, returning a human-readable, descriptive, short text.  All fields have  verbose_name . Also  help_text  if needed to fully explain the field meaning.   All fields have explicit  blank  and  null  parameters. Use only those combinations, unless there a documented need of other thing:  Normal fields  (IntegerField, DateField, ForeignKey, FileField\u2026) \n  - (optional)  null = True ,  blank = True \n  - (required)  null = False ,  blank = False  Text fields  (CharField, TextField, URLField\u2026) \n  - (optional)  null = False ,  blank = True \n  - (required)  null = False ,  blank = False  Boolean fields : \n  - (two values, T/F)  null = False ,  blank = True \n  - (three values, T/F/Null)  null = True ,  blank = True       Don\u2019t create text fields with  null = True , unless you need to distinguish between empty string and  None .   Don\u2019t create boolean fields with  blank = False , otherwise they could only be  True .   Example:  class SomeClass(models.Model):\n    name = models.CharField(max_length=100, null = False, blank = False, unique=True,\n               verbose_name = _(u'name'))\n    slug = models.SlugField(max_length=100, null = False, blank = False, unique=True,\n               verbose_name = _(u'slug'),\n               help_text = (u'Identifier of this object. Only letters, digits and underscore \"_\" allowed.'))\n    text = models.TextField(null = False, blank = True,\n               verbose_name = _(u'text'))\n\n    class Meta:\n        verbose_name = _(u'some class')\n        verbose_name_plural = _(u'some classes')\n        ordering = ['name']\n\n    def __unicode__(self):\n        return self.name",
+            "title": "Django models"
+        },
+        {
+            "location": "/release_notes/",
+            "text": "Release Notes\n\n\n0.1.0-dev\n\n\nDate:\n \nUnder Developement\n\n\nFeatures\n\n\n\n\n\u2026\n\n\ninitial setup of project.\n\n\n\n\nFixes\n\n\n\n\n\u2026",
+            "title": "Release Notes"
+        },
+        {
+            "location": "/release_notes/#release-notes",
+            "text": "",
+            "title": "Release Notes"
+        },
+        {
+            "location": "/release_notes/#010-dev",
+            "text": "Date:   Under Developement  Features   \u2026  initial setup of project.   Fixes   \u2026",
+            "title": "0.1.0-dev"
+        }
+    ]
+}

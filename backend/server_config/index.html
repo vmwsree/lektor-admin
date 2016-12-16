@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="vmwsree">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Server Configurations - lektor-admin</title>
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.5.0.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+	
+	<script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script> 
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../..">lektor-admin</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                    <li >
+                        <a href="../..">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">API <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li >
+    <a href="../../api/overview/">Overview & Usages</a>
+</li>
+                            
+<li >
+    <a href="../../api/endpoints/">REST Endpoints</a>
+</li>
+                            
+<li >
+    <a href="../../api/errors/">Errors</a>
+</li>
+                            
+<li >
+    <a href="../../api/changelog/">Changelog</a>
+</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Backend <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            
+<li class="active">
+    <a href="./">Server Configurations</a>
+</li>
+                            
+<li >
+    <a href="../coding_rules/">Coding Rules</a>
+</li>
+                        </ul>
+                    </li>
+                    <li >
+                        <a href="../../release_notes/">Release Notes</a>
+                    </li>
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                    <li >
+                        <a rel="next" href="../../api/changelog/">
+                            <i class="fa fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../coding_rules/">
+                            Next <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/vmwsree/lektor-admin-web">
+                                <i class="fa fa-github"></i>GitHub
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="main active"><a href="#server-architecture-and-configurations">Server Architecture and configurations</a></li>
+        <li class="main "><a href="#third-party-services">Third Party Services</a></li>
+            <li><a href="#heroku">Heroku</a></li>
+            <li><a href="#amazon-s3">Amazon S3</a></li>
+        <li class="main "><a href="#deploying-project">Deploying Project</a></li>
+            <li><a href="#heroku_1">Heroku</a></li>
+            <li><a href="#protecting-staging-site-with-basic-authentication">Protecting staging site with Basic Authentication</a></li>
+            <li><a href="#awsec2">AWS/EC2</a></li>
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="server-architecture-and-configurations">Server Architecture and configurations</h1>
+<h1 id="third-party-services">Third Party Services</h1>
+<p>Following third-party services are required in order to setup/deploy this project successfully.</p>
+<h2 id="heroku">Heroku</h2>
+<p>Heroku is platform as a service provider. We use to host the primarily web server along with different services required by this project like postgres database, newrelic, redis. See getting started docs <a href="https://devcenter.heroku.com/">here</a>, you&rsquo;ll require to create an account and install the <a href="https://devcenter.heroku.com/articles/heroku-command">cli-tool</a> to successfully deploy this project.</p>
+<p>Note: Alternatively, you should be able configure a linux instance to run the same project as well, heroku like settings can be added via <code>.env</code> file. (refer: <code>settings/common.py</code>). Just that, this documentation and project is focused more with Heroku as platform of choice.</p>
+<h2 id="amazon-s3">Amazon S3</h2>
+<p>Amazon Simple Storage Service (<a href="http://aws.amazon.com/s3/">Amazon S3</a>) is used to store the uploaded media files and static content. It is a scalable and cost-efficient storage solution. </p>
+<p>After <a href="http://docs.aws.amazon.com/AmazonS3/latest/gsg/SigningUpforS3.html">signing up</a> for Amazon S3, <a href="https://rbgeek.wordpress.com/2014/07/18/amazon-iam-user-creation-for-single-s3-bucket-access/">setup</a> an IAM user with access to a S3 bucket, you&rsquo;ll need <code>BUCKET_NAME</code>, and <code>AWS_ACCESS_ID</code> &amp; <code>AWS_ACCESS_SECRET</code> of IAM user to setup the project.</p>
+<p>Note: 
+- Heroku doesn&rsquo;t provide a persistent storage for uploaded content, best practise is to store the uploaded files in S3 buckets.
+- IAM user must have permission to list, update, create objects in S3.</p>
+<h1 id="deploying-project">Deploying Project</h1>
+<p>The deployment are managed via travis, but for the first time you&rsquo;ll need to set the configuration values on each of the server. Read this only, if you need to deploy for the first time.</p>
+<h3 id="heroku_1">Heroku</h3>
+<p>Run these commands to deploy this project on Heroku (substitue all references of <code>&lt;heroku-app-name&gt;</code> with the name your heroku application.)</p>
+<pre><code>heroku create --ssh-git &lt;heroku-app-name&gt;
+
+heroku buildpacks:set heroku/python --app=&lt;heroku-app-name&gt;
+heroku buildpacks:add --index 1 heroku/nodejs --app=&lt;heroku-app-name&gt;
+
+heroku addons:create heroku-postgresql --app=&lt;heroku-app-name&gt;
+heroku pg:backups schedule DATABASE_URL --at '04:00 UTC' --app=&lt;heroku-app-name&gt;
+heroku pg:promote DATABASE_URL --app=&lt;heroku-app-name&gt;
+
+heroku addons:create mailgun --app=&lt;heroku-app-name&gt;
+heroku config:set EMAIL_HOST=&quot;\$MAILGUN_SMTP_SERVER&quot; \
+                  EMAIL_HOST_USER=&quot;\$MAILGUN_SMTP_LOGIN&quot; \
+                  EMAIL_HOST_PASSWORD=&quot;\$MAILGUN_SMTP_PASSWORD&quot; --app=&lt;heroku-app-name&gt;
+
+heroku addons:create heroku-redis:hobby-dev --app=&lt;heroku-app-name&gt;
+heroku addons:create redismonitor --url `heroku config:get REDIS_URL --app=&lt;heroku-app-name&gt;` --app=&lt;heroku-app-name&gt;
+
+heroku addons:create newrelic --app=&lt;heroku-app-name&gt;
+heroku config:set NEW_RELIC_APP_NAME=&lt;new-relic-app-name&gt; --app=&lt;heroku-app-name&gt;
+
+heroku config:set DJANGO_SETTINGS_MODULE='settings.production' \
+DJANGO_SECRET_KEY=`openssl rand -hex 64` \
+SITE_DOMAIN=&lt;heroku-app-name&gt;.herokuapp.com \
+SITE_SCHEME=https \
+SITE_NAME=DJANGO_SITE_NAME_HERE --app=&lt;heroku-app-name&gt;
+
+heroku config:set DJANGO_ADMINS='webmaster@yourdomain.com' --app=&lt;heroku-app-name&gt;
+
+git push heroku master
+heroku run python manage.py createsuperuser --app=&lt;heroku-app-name&gt;
+heroku open --app=&lt;heroku-app-name&gt;
+</code></pre>
+
+<p>The following configuration doesn&rsquo;t allow you to &ldquo;by default&rdquo; upload the media on the Heroku server as Heroku does not support persistent storage. We use S3 for storing uploaded media. If you want to enable media upload:</p>
+<ul>
+<li>Create S3 bucket and get AWS access key and secret that has access to this bucket.</li>
+<li>Follow the instructions below to enable S3 upload configuration on Heroku.</li>
+</ul>
+<pre><code>heroku config:set ENABLE_MEDIA_UPLOAD_TO_S3=true \
+DJANGO_AWS_ACCESS_KEY_ID=&lt;YOUR_AWS_ACCESS_ID_HERE&gt; \
+DJANGO_AWS_SECRET_ACCESS_KEY=&lt;YOUR_SECRET_KEY_HERE&gt; \
+DJANGO_AWS_STORAGE_BUCKET_NAME=&lt;YOUR_BUCKET_NAME_HERE&gt;
+</code></pre>
+
+<p><strong>Note:</strong>
+- Use <code>--app=&lt;heroku-app-name&gt;</code> if you have more than one Heroku app configured in current project.
+- Update <code>travis.yml</code>, and add the <code>&lt;heroku-app-name&gt;</code> to automatically deploy to this configured Heroku app.</p>
+<h3 id="protecting-staging-site-with-basic-authentication">Protecting staging site with Basic Authentication</h3>
+<p>The project include <a href="https://github.com/theskumar/django-auth-wall">django-auth-wall</a> which can be used to protect the site with Basic authentication during development. To enable the protection, add the following two variables in system environment or in django settings.</p>
+<pre><code>AUTH_WALL_USERNAME=&lt;your_basic_auth_username_here&gt;
+AUTH_WALL_PASSWORD=&lt;your_basic_auth_password_here&gt;
+AUTH_WALL_REALM=&lt;your_basic_auth_message(optional)&gt;
+</code></pre>
+
+<h3 id="awsec2">AWS/EC2</h3>
+<p>For deploying on aws you need to configure all the addons provided and use python-dotenv to store and read enironment variables.</p>
+<p>Add the following to your <code>~/.ssh/config</code> file.</p>
+<pre><code>Host lektor_admin.com
+    hostname &lt;server_ip_or_&gt;
+    user ubuntu
+    ForwardAgent yes
+    identityfile &lt;PATH_OF_SERVER_PRIVATE_KEY_HERE&gt;
+</code></pre>
+
+<p>Add your github private key to your local ssh-agent, which will be used by ansible on remote server to fetch the code using <code>ForwardAgent</code></p>
+<pre><code>ssh-add &lt;PATH_TO_YOUR_GITHUB_PRIVATE_KEY&gt;
+</code></pre>
+<p>Now you can run the ansible script to setup the machine.</p>
+<pre><code>fab prod configure
+</code></pre>
+<p>This will setup os dependencies, services like supervisor, nginx and fetch our code from Github. Our production environment requires 
+some environment variables in <code>.env</code>. So you can write a file <code>prod.env</code> locally and upload it to server with</p>
+<pre><code>scp prod.env lektor_admin.com:/home/ubuntu/lektor-admin-web/.env
+</code></pre>
+<p>You can also use fab to set environment variables one by one:</p>
+<pre><code>fab prod config:set,&lt;VAR_NAME&gt;,&lt;VAR_VALUE&gt;
+</code></pre>
+<p>Now that you have <code>.env</code> setup, you can deploy your code and start services:</p>
+<pre><code>fab prod deploy
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+        <script src="../../js/github_issues_link.js"></script><div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
