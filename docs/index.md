@@ -1,6 +1,6 @@
 # lektor-admin Documentation
 
-__Version:__ 0.0.1
+__Version:__ 0.1.0-dev
 
 ## API
 

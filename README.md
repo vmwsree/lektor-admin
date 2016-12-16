@@ -1,7 +1,7 @@
 lektor-admin
 ==============================
 
-__Version:__ 0.0.1
+__Version:__ 0.1.0-dev
 
 Hosted Admin Panel For Lektor Project
 
